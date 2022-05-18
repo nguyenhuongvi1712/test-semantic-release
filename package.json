@@ -36,7 +36,10 @@
       "last 1 safari version"
     ]
   },
-  "repository": "https://github.com/nguyenhuongvi1712/test-semantic-release",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nguyenhuongvi1712/test-semantic-release.git"
+  },
   "devDependencies": {
     "semantic-release": "^19.0.2"
   }
