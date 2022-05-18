@@ -1,16 +1,23 @@
-name: CI
-on: push
+name: Release
+"on":
+  push:
+    branches:
+      - master
+      - next
+      - beta
+      - "*.x"
 jobs:
-  test:
-    runs-on: ubuntu-16.04
+  release:
+    name: release
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          cache: npm
+          node-version: 16
       - run: npm ci
-      - run: npm test
-      - name: Release
+      - run: npx semantic-release
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
