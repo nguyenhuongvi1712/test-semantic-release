@@ -3,9 +3,6 @@ name: Release
   push:
     branches:
       - master
-      - next
-      - beta
-      - "*.x"
 jobs:
   release:
     name: release
@@ -20,4 +17,4 @@ jobs:
       - run: npx semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: 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
